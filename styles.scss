@@ -1,35 +1,95 @@
 body {
+  display: flex;
+  padding: 20px;
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center; /* Центрирует контейнер по вертикали */
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0px; /* Компенсирует отступы на карточках */
   min-width: 375px;
-  border: 2px solid #000;
-  margin: 10px;
+  max-width: 1240px;
+  width: 100%;
+  padding: 0;
+  gap: 20px;
+  justify-content: start;
 }
 
 .card {
-  margin: 10px;
-  padding: 20px;
-  background-color: #f0f0f0;
+  border-radius: 5px;
   text-align: center;
-  box-sizing: border-box; /* Включает отступы внутрь элемента */
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px rgba(164, 164, 164, 0.08);
+    box-shadow: -3px 0px 40px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    height: 100%;
+    object-position: center top;
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-width: 340px;
+    justify-content: center;
+    flex-direction: column;
+
+    .card {
+      height: 140px;
+      flex-basis: calc(100%); /* 1 колонка на экранах шириной до 767px */
+
+      img {
+        width: auto;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1240px) {
+  .container {
+    width: 780px;
+
+    .card {
+      width: 100%;
+      height: 120px;
+      flex-basis: calc(33.33% - 15px); /* 3 колонки на экранах шириной от 768px до 1279px */
+
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1240px) {
-  .container {
-    max-width: 1240px;
+  body {
+    padding: 30px;
+
+    .container {
+      width: 1240px;
+      gap: 30px;
+
+      .card {
+        width: 100%;
+        height: 120px;
+        flex-basis: calc(25% - 23px); /* 4 колонки на экранах шириной от 1280px до 1440px */
+
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
 }
-
-@media screen and (min-width: 768px) {
-  .container {
-    min-width: 760px;
-  }
-}
-
